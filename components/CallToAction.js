@@ -1,8 +1,11 @@
 import React from "react";
+import Link from "next/link";
 import {
 	chakra,
 	Box,
+	Text,
 	Flex,
+	Button,
 	useColorModeValue,
 	Icon,
 	Stack
@@ -50,11 +53,12 @@ export default function CallToAction() {
 		<Flex
 			bg={useColorModeValue("#F9FAFB", "gray.600")}
 			p={20}
-			w="auto"
+			w="full"
 			justifyContent="center"
 			alignItems="center">
 			<Box
 				py={12}
+				w="full"
 				bg={useColorModeValue("white", "gray.800")}
 				rounded="xl">
 				<Box maxW="7xl" mx="auto" px={{ base: 4, lg: 8 }}>
@@ -96,13 +100,53 @@ export default function CallToAction() {
 							gridColumnGap={{ md: 8 }}
 							gridRowGap={{ md: 10 }}>
 							<Feature title="Lost a pet?" icon={<Search2Icon />}>
-								Add details here
+								<Text>
+									All posts are saved in our database and made
+									available to you. We have a friendly search
+									page that lets you customize and filter by
+									area and type of pet to find your missing
+									pet.
+								</Text>
+								<Link href="/search">
+									<a>
+										<Button
+											rounded={"md"}
+											size={"sm"}
+											fontWeight={"normal"}
+											px={4}
+											mt={2}
+											colorScheme={"red"}
+											bg={"red.400"}
+											_hover={{ bg: "red.500" }}>
+											Search
+										</Button>
+									</a>
+								</Link>
 							</Feature>
 
 							<Feature
 								title="Found a pet?"
 								icon={<WarningIcon />}>
-								Add details here
+								<Text>
+									Perfect! By following the link below, you
+									can create a post as well as upload a photo
+									of the missing pet. You are also able to add
+									a description of the pet as well as the
+									current location the pet can be found and
+									contact info.
+								</Text>
+								<Link href="/post">
+									<a>
+										<Button
+											rounded={"md"}
+											size={"sm"}
+											mt={2}
+											fontWeight={"normal"}
+											px={4}>
+											Create a post
+										</Button>
+									</a>
+								</Link>
 							</Feature>
 						</Stack>
 					</Box>
