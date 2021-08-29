@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "next/link";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import {
 	chakra,
 	Box,
@@ -14,7 +13,6 @@ import {
 import { Search2Icon, WarningIcon } from "@chakra-ui/icons";
 
 export default function CallToAction() {
-	const router = useRouter();
 	const Feature = (props) => {
 		return (
 			<Flex>
@@ -109,19 +107,21 @@ export default function CallToAction() {
 									area and type of pet to find your missing
 									pet.
 								</Text>
-								<Button
-									onClick={() => router.push("/search")}
-									rounded={"md"}
-									size={"sm"}
-									fontWeight={"normal"}
-									px={4}
-									mt={2}
-									colorScheme={"red"}
-									bg={"red.400"}
-									_hover={{ bg: "red.500" }}>
-									{" "}
-									Search
-								</Button>
+								<Link href="/search">
+									<a>
+										<Button
+											rounded={"md"}
+											size={"sm"}
+											fontWeight={"normal"}
+											px={4}
+											mt={2}
+											colorScheme={"red"}
+											bg={"red.400"}
+											_hover={{ bg: "red.500" }}>
+											Search
+										</Button>
+									</a>
+								</Link>
 							</Feature>
 
 							<Feature
@@ -135,15 +135,18 @@ export default function CallToAction() {
 									current location the pet can be found and
 									contact info.
 								</Text>
-								<Button
-									onClick={() => router.push("/post")}
-									rounded={"md"}
-									size={"sm"}
-									mt={2}
-									fontWeight={"normal"}
-									px={4}>
-									Create a post
-								</Button>
+								<Link href="/post">
+									<a>
+										<Button
+											rounded={"md"}
+											size={"sm"}
+											mt={2}
+											fontWeight={"normal"}
+											px={4}>
+											Create a post
+										</Button>
+									</a>
+								</Link>
 							</Feature>
 						</Stack>
 					</Box>
