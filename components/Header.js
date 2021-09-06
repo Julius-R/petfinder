@@ -7,6 +7,7 @@ import {
 	useColorMode,
 	Text
 } from "@chakra-ui/react";
+import Link from "next/dist/client/link";
 
 import { MoonIcon } from "@chakra-ui/icons";
 
@@ -29,7 +30,11 @@ export default function Header() {
 					alignItems="center"
 					justifyContent="space-between"
 					mx="auto">
-					<Text>Pet Finders</Text>
+					<Link href="/">
+						<a>
+							<Text>Pet Finders</Text>
+						</a>
+					</Link>
 					{/* Toggle on and off dark mode */}
 					<Button size="sm" onClick={toggleColorMode}>
 						<MoonIcon />
