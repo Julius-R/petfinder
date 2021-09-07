@@ -12,9 +12,11 @@ import {
 	Button
 } from "@chakra-ui/react";
 import Layout from "../components/Layout";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
 export default function Post() {
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -23,6 +25,9 @@ export default function Post() {
 	} = useForm();
 	const onSubmit = (values) => {
 		console.log(values);
+	};
+	const onCancel = () => {
+		router.push("/");
 	};
 	return (
 		<Layout>
@@ -120,6 +125,7 @@ export default function Post() {
 					</Button>
 					{/* Button to redirect back to home page */}
 					<Button
+						onClick={onCancel}
 						isFullWidth={false}
 						type="submit"
 						px={24}
