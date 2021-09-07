@@ -1,5 +1,5 @@
 //  Page for displaying form to submit a post
-// TODO  implement validation, add s3 bucket api, reroute to home page after submission or cancel
+// TODO  add s3 bucket api
 
 import {
 	Container,
@@ -9,13 +9,15 @@ import {
 	Input,
 	Select,
 	Text,
-	Button
+	Button,
+	useToast
 } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 
 export default function Post() {
+	const toast = useToast();
 	const router = useRouter();
 	const {
 		register,
@@ -23,8 +25,20 @@ export default function Post() {
 		reset,
 		formState: { errors }
 	} = useForm();
-	const onSubmit = (values) => {
+	const onSubmit = async (values) => {
 		console.log(values);
+		if (isNaN(values.location)) {
+			toast({
+				description: "Please enter a valid location",
+				status: "error",
+				duration: 4000,
+				isClosable: true
+			});
+			return;
+		}
+		// API Call
+
+		// await router.push("/");
 	};
 	const onCancel = () => {
 		router.push("/");
@@ -37,13 +51,6 @@ export default function Post() {
 					action="#"
 					method="POST"
 					onSubmit={handleSubmit(onSubmit)}>
-					{/*
-							Description
-							Image
-							Pet Type
-							Zip Code
-							Contact
-						*/}
 					<FormControl id="image" isRequired mb={3}>
 						<FormLabel>Upload Image</FormLabel>
 						<input
@@ -123,7 +130,6 @@ export default function Post() {
 						colorScheme="green">
 						Submit Post
 					</Button>
-					{/* Button to redirect back to home page */}
 					<Button
 						onClick={onCancel}
 						isFullWidth={false}
