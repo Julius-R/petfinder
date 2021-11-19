@@ -29,9 +29,9 @@ export default function Post() {
 		console.log(values);
 		if (isNaN(values.location)) {
 			toast({
-				description: "Please enter a valid location",
+				description: "Please enter a valid zip code",
 				status: "error",
-				duration: 4000,
+				duration: 9000,
 				isClosable: true
 			});
 			return;
